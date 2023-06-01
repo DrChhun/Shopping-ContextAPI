@@ -7,6 +7,16 @@ module.exports = {
   ],
   theme: {
     extend: {
+      container: {
+        center: true,
+        padding: '1rem',
+        screens: {
+          sm: '640px',
+          md: '728px',
+          lg: '984px',
+          xl: '1280px'
+        }
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
@@ -14,5 +24,7 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/aspect-ratio'),
+  ],
 }
