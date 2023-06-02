@@ -7,7 +7,7 @@ export const Banner = () => {
         src="https://m.media-amazon.com/images/M/MV5BNDcwZDc2NTEtMzU0Ni00YTQyLWIyYTQtNTI3YjM0MzhmMmI4XkEyXkFqcGdeQXVyNTgyNTA4MjM@._V1_.jpg"
         alt=""
       />
-      <div className="bg-black text-white md:w-1/2 p-8 flex flex-col space-y-4 md:space-y-0 md:justify-between rounded-r-md">
+      <div className="bg-black text-white md:w-1/2 p-8 flex flex-col space-y-4 md:space-y-0 md:justify-between rounded-b-md md:rounded-r-md">
         <p className="text-gray-300 text-sm md:text-base">LIMITED OFFER</p>
         <p className="text-3xl md:text-5xl font-semibold">
           35% off only this friday and get special gift
