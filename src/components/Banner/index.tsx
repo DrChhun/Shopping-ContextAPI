@@ -1,8 +1,14 @@
+import Image from "next/image";
+
 export const Banner = () => {
   console.log("banner");
   return (
     <div className="h-full flex flex-col md:flex-row md:h-[300px] container my-8 md:my-16">
-      <img
+      <Image
+        height={0}
+        width={0}
+        sizes="100vw"
+        style={{ width: "100%", height: "auto" }}
         className="cursor-pointer !object-cover md:w-1/2 rounded-t-md md:rounded-t-none md:rounded-l-md h-[300px] md:h-full"
         src="https://m.media-amazon.com/images/M/MV5BNDcwZDc2NTEtMzU0Ni00YTQyLWIyYTQtNTI3YjM0MzhmMmI4XkEyXkFqcGdeQXVyNTgyNTA4MjM@._V1_.jpg"
         alt=""

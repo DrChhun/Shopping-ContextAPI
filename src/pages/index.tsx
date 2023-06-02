@@ -9,15 +9,17 @@ import { IStore } from "./api/interface";
 import React, { createContext, useState } from "react";
 import { NextSeo } from "next-seo";
 import { Paginate } from "@/components/Paginate";
+import Home from "./home";
 
 interface Props {
   repo: IStore[];
 }
 
-export const AppContext = createContext<any>(null);
+export const AppContext = createContext<any>("");
 
 const Page: NextPage<Props> = ({ repo }) => {
   console.log("index parent");
+  const storeData = repo;
   const [cate, setCate] = useState<any>("all");
   const [pageSize, setPageSize] = useState<number>(repo.length);
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -41,6 +43,7 @@ const Page: NextPage<Props> = ({ repo }) => {
         firstPage,
         handleSearch,
         setHandleSearch,
+        storeData,
       }}
     >
       <NextSeo
@@ -57,13 +60,14 @@ const Page: NextPage<Props> = ({ repo }) => {
           site_name: "shopcontext",
         }}
       />
-      <Navbar />
+      {/* <Navbar />
       <CategoryBar />
       <CardList data={repo} />
       <Paginate />
       <Banner />
       <Cta />
-      <Footer />
+      <Footer /> */}
+      <Home />
     </AppContext.Provider>
   );
 };
