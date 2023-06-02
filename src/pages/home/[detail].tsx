@@ -40,7 +40,7 @@ const Detail = ({ posts }: Props) => {
       <Link href="/">
         <p className="py-8 text-2xl font-semibold">🛖 Home</p>
       </Link>
-      <div className="flex flex-col md:flex-row gap-16">
+      <div className="flex pb-16 flex-col md:flex-row gap-16">
         <div className="rounded-md">
           <Image
             className="rounded-md"
@@ -76,16 +76,16 @@ const Detail = ({ posts }: Props) => {
             <p className="text-lg font-semibold">Descriptions</p>
             <p>{posts.description}</p>
           </div>
-          <div className="flex">
-            <div className="space-x-2">
+          <div className="flex flex-col md:flex-row">
+            <div className="space-x-2 mx-auto mb-8 md:mb-0">
               <button>-</button>
               <input
                 type="number"
-                className="px-4 py-2 border-2 text-center focus:outline-none border-gray-100 bg-gray-50"
+                className="px-12 md:px-4 py-2 border-2 text-center focus:outline-none border-gray-100 bg-gray-50"
               />
               <button>+</button>
             </div>
-            <button className="ml-8 bg-black text-white px-4 py-2 border-2 border-black">
+            <button className="md:ml-8 bg-black text-white px-4 py-2 border-2 border-black">
               Check Out
             </button>
           </div>

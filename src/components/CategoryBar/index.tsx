@@ -28,7 +28,7 @@ export const CategoryBar: React.FC = () => {
   console.log("category bar");
   const { setCate } = useContext(AppContext);
   return (
-    <div className="container pt-16 flex items-center overflow-x-auto">
+    <div className="container flex items-center overflow-x-auto">
       {/* <h2 className="mr-8 whitespace-nowrap">Choose category : </h2> */}
       <div className="flex gap-4 cursor-pointer">
         {data.map((x) => (
