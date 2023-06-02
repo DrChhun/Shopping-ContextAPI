@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 interface Props {
   image: string;
   title: string;
@@ -12,7 +14,11 @@ export const Card: React.FC<Props> = ({ image, title, price, rating }) => {
     <>
       <div className="group">
         <div className="!aspect-h-6 !aspect-w-5 mb-8 overflow-hidden rounded-md">
-          <img
+          <Image
+            width={0}
+            height={0}
+            sizes="100vw"
+            style={{ width: "100%", height: "auto" }}
             className="!object-cover !h-fit rounded-md group-hover:scale-105 duration-1000"
             src={image}
             alt={title}

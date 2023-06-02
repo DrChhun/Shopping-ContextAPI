@@ -2,12 +2,9 @@ import { IStore } from "@/pages/api/interface";
 import { Card } from ".";
 import { AppContext } from "@/pages";
 import { useContext } from "react";
+import Link from "next/link";
 
-interface Props {
-  data: IStore[];
-}
-
-export const CardList: React.FC<Props> = ({ data }) => {
+export const CardList: React.FC = () => {
   console.log("cardlist Child");
   const { cate, currentData, handleSearch } = useContext(AppContext);
   return (
@@ -19,8 +16,10 @@ export const CardList: React.FC<Props> = ({ data }) => {
         .filter((x: IStore) => {
           return cate === "all" ? x : x.category === cate;
         })
-        .map((x: any) => (
-          <Card key={x.name} {...x} />
+        .map((x: any, index: any) => (
+          <Link href={`/home/${index + 1}`} key={index}>
+            <Card {...x} />
+          </Link>
         ))}
     </div>
   );
