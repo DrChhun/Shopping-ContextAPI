@@ -29,7 +29,7 @@ export const CategoryBar: React.FC = () => {
   const { setCate } = useContext(AppContext);
   return (
     <div className="container pt-16 flex items-center overflow-x-auto">
-      <h2 className="mr-8">Choose category : </h2>
+      {/* <h2 className="mr-8 whitespace-nowrap">Choose category : </h2> */}
       <div className="flex gap-4 cursor-pointer">
         {data.map((x) => (
           <div
@@ -37,7 +37,7 @@ export const CategoryBar: React.FC = () => {
             className="px-4 py-2 bg-gray-100 hover:bg-gray-200 duration-300 rounded-full"
             key={x.id}
           >
-            <p>{x.name}</p>
+            <p className="whitespace-nowrap">{x.name}</p>
           </div>
         ))}
       </div>

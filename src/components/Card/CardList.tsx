@@ -9,11 +9,14 @@ interface Props {
 
 export const CardList: React.FC<Props> = ({ data }) => {
   console.log("cardlist Child");
-  const { cate } = useContext(AppContext);
+  const { cate, currentData, handleSearch } = useContext(AppContext);
   return (
-    <div className="cursor-pointer container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 py-8 md:py-16">
-      {data
-        ?.filter((x) => {
+    <div className="cursor-pointer container grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 py-8 md:py-16">
+      {currentData
+        ?.filter((x: IStore) =>
+          x.title.toLowerCase().includes(handleSearch.toLowerCase())
+        )
+        .filter((x: IStore) => {
           return cate === "all" ? x : x.category === cate;
         })
         .map((x: any) => (
