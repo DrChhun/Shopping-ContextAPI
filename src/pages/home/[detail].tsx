@@ -76,6 +76,19 @@ const Detail = ({ posts }: Props) => {
             <p className="text-lg font-semibold">Descriptions</p>
             <p>{posts.description}</p>
           </div>
+          <div className="flex">
+            <div className="space-x-2">
+              <button>-</button>
+              <input
+                type="number"
+                className="px-4 py-2 border-2 text-center focus:outline-none border-gray-100 bg-gray-50"
+              />
+              <button>+</button>
+            </div>
+            <button className="ml-8 bg-black text-white px-4 py-2 border-2 border-black">
+              Check Out
+            </button>
+          </div>
         </div>
       </div>
     </div>
