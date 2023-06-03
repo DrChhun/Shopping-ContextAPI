@@ -15,11 +15,18 @@ export const CheckoutContextProvider = ({ children }: Props) => {
     name: string,
     price: number,
     image: string,
-    size: string
+    size: string,
+    description: string
   ) => {
     setItemsCart((prev: any) => [
       ...prev,
-      { name: name, price: price, image: image, size: size },
+      {
+        name: name,
+        price: price,
+        image: image,
+        size: size,
+        description: description,
+      },
     ]);
   };
 

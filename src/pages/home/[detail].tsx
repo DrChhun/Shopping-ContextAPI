@@ -93,7 +93,13 @@ const Detail = ({ posts }: Props) => {
             </div>
             <button
               onClick={() =>
-                addToCart(posts.title, posts.price, posts.image, handleSize)
+                addToCart(
+                  posts.title,
+                  posts.price,
+                  posts.image,
+                  handleSize,
+                  posts.description
+                )
               }
               className="md:ml-8 bg-black text-white px-4 py-2 border-2 border-black"
             >
