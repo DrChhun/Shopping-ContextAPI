@@ -1,6 +1,8 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { useContext, useState } from "react";
+import { CheckoutContext } from "@/context/checkout-context";
 
 interface Props {
   posts: {
@@ -34,13 +36,14 @@ const sizeData = [
 ];
 
 const Detail = ({ posts }: Props) => {
-  console.log(posts, "DATA");
+  const { setItemsCart, addToCart, itemsCart } = useContext(CheckoutContext);
+  const [handleSize, setHandleSize] = useState<string>();
   return (
     <div className="container">
       <Link href="/">
         <p className="py-8 text-2xl font-semibold">🛖 Home</p>
       </Link>
-      <div className="flex pb-16 flex-col md:flex-row gap-16">
+      <div className="flex pb-16 justify-center flex-col md:flex-row gap-16">
         <div className="rounded-md">
           <Image
             className="rounded-md"
@@ -52,10 +55,10 @@ const Detail = ({ posts }: Props) => {
             alt=""
           />
         </div>
-        <div className="space-y-4 flex flex-col my-auto">
+        <div className="space-y-4 flex md:w-1/2 flex-col my-auto">
           <h2 className="text-2xl md:text-3xl font-semibold">{posts.title}</h2>
           <p>⭐️{posts.rating.rate}</p>
-          <p className="text-2xl font-semibold bg-green-200 w-fit px-4 py-2 rounded-full text-green-700">
+          <p className="text-md md:text-xl font-semibold bg-green-200 w-fit px-4 py-2 rounded-full text-green-700">
             ${posts.price}
           </p>
           <hr />
@@ -64,8 +67,11 @@ const Detail = ({ posts }: Props) => {
             <div className="flex gap-8">
               {sizeData.map((x) => (
                 <p
-                  className="py-2 px-4 rounded-md duration-300 hover:bg-gray-200 bg-gray-100"
+                  className={`py-2 px-4 rounded-md duration-200 hover:bg-gray-200 bg-gray-100 ${
+                    handleSize === x.size && "!bg-gray-300 text-white"
+                  }`}
                   key={x.id}
+                  onClick={() => setHandleSize(x.size)}
                 >
                   {x.size}
                 </p>
@@ -77,7 +83,7 @@ const Detail = ({ posts }: Props) => {
             <p>{posts.description}</p>
           </div>
           <div className="flex flex-col md:flex-row">
-            <div className="space-x-2 mx-auto mb-8 md:mb-0">
+            <div className="space-x-2 mx-auto mb-8 md:m-0">
               <button>-</button>
               <input
                 type="number"
@@ -85,8 +91,13 @@ const Detail = ({ posts }: Props) => {
               />
               <button>+</button>
             </div>
-            <button className="md:ml-8 bg-black text-white px-4 py-2 border-2 border-black">
-              Check Out
+            <button
+              onClick={() =>
+                addToCart(posts.title, posts.price, posts.image, handleSize)
+              }
+              className="md:ml-8 bg-black text-white px-4 py-2 border-2 border-black"
+            >
+              Add to Cart
             </button>
           </div>
         </div>

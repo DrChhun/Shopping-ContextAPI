@@ -1,14 +1,7 @@
-import { Banner } from "@/components/Banner";
-import { CardList } from "@/components/Card/CardList";
-import { CategoryBar } from "@/components/CategoryBar";
-import { Cta } from "@/components/Cta";
-import { Footer } from "@/components/Footer";
-import { Navbar } from "@/components/Navbar";
 import { GetStaticProps, NextPage } from "next";
 import { IStore } from "./api/interface";
 import React, { createContext, useState } from "react";
 import { NextSeo } from "next-seo";
-import { Paginate } from "@/components/Paginate";
 import Home from "./home";
 
 interface Props {
@@ -60,13 +53,6 @@ const Page: NextPage<Props> = ({ repo }) => {
           site_name: "shopcontext",
         }}
       />
-      {/* <Navbar />
-      <CategoryBar />
-      <CardList data={repo} />
-      <Paginate />
-      <Banner />
-      <Cta />
-      <Footer /> */}
       <Home />
     </AppContext.Provider>
   );
