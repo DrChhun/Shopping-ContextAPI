@@ -5,8 +5,6 @@ import { Cta } from "@/components/Cta";
 import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
 import { Paginate } from "@/components/Paginate";
-import { useContext } from "react";
-import { AppContext } from "..";
 
 const Home = () => {
   return (
