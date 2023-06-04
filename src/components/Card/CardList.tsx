@@ -17,7 +17,7 @@ export const CardList: React.FC = () => {
           return cate === "all" ? x : x.category === cate;
         })
         .map((x: any, index: any) => (
-          <Link href={`/home/${index + 1}`} key={index}>
+          <Link href={`/home/${x.id}`} key={index}>
             <Card {...x} />
           </Link>
         ))}
