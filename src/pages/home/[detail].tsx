@@ -3,6 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { useContext, useState } from "react";
 import { CheckoutContext } from "@/context/checkout-context";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface Props {
   posts: {
@@ -36,8 +38,21 @@ const sizeData = [
 ];
 
 const Detail = ({ posts }: Props) => {
-  const { setItemsCart, addToCart, itemsCart } = useContext(CheckoutContext);
+  const { setItemsCart, addToCart, itemsCart, setHandleItems, handleItems } =
+    useContext(CheckoutContext);
   const [handleSize, setHandleSize] = useState<string>();
+  const notify = () =>
+    toast.success("You have added to cart 🛒", {
+      position: "top-right",
+      autoClose: 2500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+
   return (
     <div className="container">
       <Link href="/">
@@ -84,23 +99,27 @@ const Detail = ({ posts }: Props) => {
           </div>
           <div className="flex flex-col md:flex-row">
             <div className="space-x-2 mx-auto mb-8 md:m-0">
-              <button>-</button>
+              <button onClick={() => setHandleItems(handleItems - 1)}>-</button>
               <input
+                onChange={(e) => setHandleItems(Number(e.target.value))}
+                value={handleItems}
                 type="number"
                 className="px-12 md:px-4 py-2 border-2 text-center focus:outline-none border-gray-100 bg-gray-50"
               />
-              <button>+</button>
+              <button onClick={() => setHandleItems(handleItems + 1)}>+</button>
             </div>
             <button
-              onClick={() =>
-                addToCart(
-                  posts.title,
-                  posts.price,
-                  posts.image,
-                  handleSize,
-                  posts.description
-                )
-              }
+              onClick={() => {
+                notify(),
+                  addToCart(
+                    posts.title,
+                    posts.price,
+                    posts.image,
+                    handleSize,
+                    posts.description,
+                    handleItems
+                  );
+              }}
               className="md:ml-8 bg-black text-white px-4 py-2 border-2 border-black"
             >
               Add to Cart
@@ -108,6 +127,20 @@ const Detail = ({ posts }: Props) => {
           </div>
         </div>
       </div>
+      <Link href="/checkout">
+        <ToastContainer
+          position="top-right"
+          autoClose={2500}
+          hideProgressBar={false}
+          newestOnTop={true}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
+      </Link>
     </div>
   );
 };

@@ -10,19 +10,21 @@ export const CheckoutContextProvider = ({ children }: Props) => {
   const [itemsCart, setItemsCart] = useState<any>([
     { name: "null", price: 0, iamge: "null", size: "null" },
   ]);
+  const [handleItems, setHandleItems] = useState<number>(1);
 
   const addToCart = (
     name: string,
     price: number,
     image: string,
     size: string,
-    description: string
+    description: string,
+    items: number
   ) => {
     setItemsCart((prev: any) => [
       ...prev,
       {
         name: name,
-        price: price,
+        price: price * items,
         image: image,
         size: size,
         description: description,
@@ -30,11 +32,16 @@ export const CheckoutContextProvider = ({ children }: Props) => {
     ]);
   };
 
-  const [size, setSize] = useState<string>("");
-  const [totalPrice, setTotalPrice] = useState<number>();
-
   return (
-    <CheckoutContext.Provider value={{ setItemsCart, addToCart, itemsCart }}>
+    <CheckoutContext.Provider
+      value={{
+        setItemsCart,
+        addToCart,
+        itemsCart,
+        setHandleItems,
+        handleItems,
+      }}
+    >
       {children}
     </CheckoutContext.Provider>
   );
