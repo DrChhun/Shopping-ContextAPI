@@ -4,13 +4,6 @@ import { CheckoutContext } from "@/context/checkout-context";
 import Link from "next/link";
 import { useContext } from "react";
 
-interface Props {
-  name: string;
-  price: number;
-  image: string;
-  size: string;
-}
-
 const CheckOutPage = () => {
   const { itemsCart } = useContext(CheckoutContext);
   let total: number[] = [];
